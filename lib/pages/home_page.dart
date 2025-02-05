@@ -12,15 +12,15 @@ class _HomePageState extends State<HomePage> {
 
 List<Widget> myTabs = [
   //Donut tab
-  MyTab(iconPath: 'lib/icons/donut.png'),
+  const MyTab(iconPath: 'lib/icons/donut.png'),
   //Burguer tab
-  MyTab(iconPath: 'lib/icons/burguer.png'),
+  const  MyTab(iconPath: 'lib/icons/burger.png'),
   //Smoothie
-  MyTab(iconPath: 'lib/icons/smoothie.png'),
+  const MyTab(iconPath: 'lib/icons/smoothie.png'),
   //Pancake tab
-  MyTab(iconPath: 'lib/icons/pancakes.png'),
+  const MyTab(iconPath: 'lib/icons/pancakes.png'),
   //Pizza tab
-  MyTab(iconPath: 'lib/icons/pizza.png'),
+  const MyTab(iconPath: 'lib/icons/pizza.png'),
 ];
 
   @override
@@ -50,16 +50,16 @@ List<Widget> myTabs = [
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline
-                  ),)
+                    ),)
                 ],
               ),
-            )
-          ],
-          //Tab bar
-      //TabBar(tabs: myTabs,)
-          //Tap bar view
+          ),
+        //Tab bar
+        TabBar(tabs: myTabs),
+        //Tap bar view
       
-          //Carrito
+        //Carrito
+          ],
         ) ,
         ),
     );

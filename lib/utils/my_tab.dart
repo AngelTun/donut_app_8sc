@@ -4,7 +4,7 @@ class MyTab extends StatelessWidget {
   //Ruta del archivo del icono
 
   final String iconPath;
-  MyTab({super.key, required this.iconPath});
+  const MyTab({super.key, required this.iconPath});
 
   @override
   Widget build(BuildContext context) {
