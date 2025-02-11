@@ -1,3 +1,8 @@
+import 'package:donut_app_8sc/Tabs/burger_tab.dart';
+import 'package:donut_app_8sc/Tabs/donut_tab.dart';
+import 'package:donut_app_8sc/Tabs/pancake_tab.dart';
+import 'package:donut_app_8sc/Tabs/pizza_tab.dart';
+import 'package:donut_app_8sc/Tabs/smoothie_tab.dart';
 import 'package:donut_app_8sc/utils/my_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +62,15 @@ List<Widget> myTabs = [
         //Tab bar
         TabBar(tabs: myTabs),
         //Tap bar view
-      
+      Expanded(child: 
+      TabBarView(children: [
+      DonutTab(),
+      BurgerTab(),
+      SmoothieTab(),
+      PancakeTab(),
+      PizzaTab()
+      ]
+      )),
         //Carrito
           ],
         ) ,
