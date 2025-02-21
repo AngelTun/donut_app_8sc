@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DonutTile extends StatelessWidget {
-  final String donutFlavor;
-  final String donutPrice;
-  final dynamic donutColor;
+class BurgerTile extends StatelessWidget {
+  final String burgerName;
+  final String burgerPrice;
+  final dynamic burgerColor;
   final String imageName;
   
-
-  //Valor fijo del borde circular
-  final  double borderRadius = 24;
-  const DonutTile({super.key, required this.donutFlavor, required this.donutPrice, this.donutColor, required this.imageName});
+  // Valor fijo del borde circular
+  final double borderRadius = 24;
+  const BurgerTile({super.key, required this.burgerName, required this.burgerPrice, this.burgerColor, required this.imageName});
 
   @override
   Widget build(BuildContext context) {
@@ -17,63 +16,60 @@ class DonutTile extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-          color: donutColor[50],
+          color: burgerColor[50],
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(borderRadius),
             topRight: Radius.circular(borderRadius))
             ),
           child: Column(children: [
-            //Precio
+            // Precio
             Row(
-            //Alinea el texto a la derecha
+            // Alinea el texto a la derecha
             mainAxisAlignment: MainAxisAlignment.end,
               children: [
             Container(
               decoration: BoxDecoration(
-                color:  donutColor[100],
+                color:  burgerColor[100],
                 borderRadius: BorderRadius.circular(borderRadius)
               ),
               padding:
               const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-              child: Text('\$$donutPrice',
+              child: Text('\$$burgerPrice',
               style: TextStyle(
                 fontWeight:FontWeight.bold,
                 fontSize: 16,
-                color: donutColor[800] ),),
+                color: burgerColor[800] ),),
             )
             ],),
-            //Imagen del producto
+            // Imagen del producto
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
               child: Image.asset(imageName),),
-            //Texto del  sabor del producto con la tienda
-            // Texto del sabor del producto
+            // Texto del nombre del producto
             Text(
-              donutFlavor,
+              burgerName,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-           // const SizedBox(height: 4),
-            // Nombre de la tienda
+           // Nombre de la tienda
             const Text(
-              'Crispy Cream',
+              'Grill Master',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
             ),
-            //const SizedBox(height: 4),
-            //íconos de "Me encanta" y "agregar"
+            // Íconos de "Me encanta" y "Agregar"
             Padding(
               padding: const EdgeInsets.all(12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Love icon
-                  Icon(Icons.favorite, color: Colors.pink[400],),
+                  // Love icon
+                  Icon(Icons.favorite, color: Colors.red[400],),
                   Text("Add", style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -81,7 +77,6 @@ class DonutTile extends StatelessWidget {
                   ),)
                 ],),
               ),
-
           ],),
       ),
     );

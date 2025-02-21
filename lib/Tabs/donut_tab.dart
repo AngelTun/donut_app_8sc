@@ -5,10 +5,14 @@ class DonutTab extends StatelessWidget {
   //Lista de donas
   final List donutsOnSale = [
     //[donutFlavor, donutPrice, donutColor, imageName]
-    ["Ice Cream", "36", Colors.blue, "lib/images/icecream_donut.png"],
-    ["Strawberry", "45", Colors.red, "lib/images/strawberry_donut.png"],
-    ["Grape Ape", "84", Colors.purple, "lib/images/grape_donut.png"],
-    ["Chocolate", "95", Colors.brown, "lib/images/chocolate_donut.png"]
+    ["Ice Cream", "36", Colors.blue, "lib/images/donuts/icecream_donut.png"],
+    ["Strawberry", "45", Colors.red, "lib/images/donuts/strawberry_donut.png"],
+    ["Grape Ape", "84", Colors.purple, "lib/images/donuts/grape_donut.png"],
+    ["Chocolate", "95", Colors.brown, "lib/images/donuts/chocolate_donut.png"],
+    ["Vainilla", "36", Colors.yellow, "lib/images/donuts/vainilla_donut.png"],
+    ["Mordisko", "45", Colors.lightBlueAccent, "lib/images/donuts/mordisko_donut.png"],
+    ["Caramelo", "84", Colors.brown, "lib/images/donuts/caramelo_donut.png"],
+    ["Moka", "95", Colors.brown, "lib/images/donuts/moka_donut.png"]
   ];
   DonutTab ({super.key});
 
@@ -18,7 +22,7 @@ class DonutTab extends StatelessWidget {
       //Como se va a distribuir
       gridDelegate:
       const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2),
+        crossAxisCount: 2, childAspectRatio: 1/1.5),
     //Que elementos tendra
     itemBuilder: (context, index) {
       return DonutTile (
