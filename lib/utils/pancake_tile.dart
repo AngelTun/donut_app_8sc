@@ -5,10 +5,18 @@ class PancakeTile extends StatelessWidget {
   final String pancakePrice;
   final dynamic pancakeColor;
   final String imageName;
-
-  // Valor fijo del borde circular
+  final VoidCallback onTap;
+  
   final double borderRadius = 24;
-  const PancakeTile({super.key, required this.pancakeFlavor, required this.pancakePrice, this.pancakeColor, required this.imageName});
+  
+  const PancakeTile({
+    super.key,
+    required this.pancakeFlavor,
+    required this.pancakePrice,
+    this.pancakeColor,
+    required this.imageName,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,74 +26,73 @@ class PancakeTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: pancakeColor[50],
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(borderRadius),
-              topRight: Radius.circular(borderRadius)),
+            bottomLeft: Radius.circular(borderRadius),
+            topRight: Radius.circular(borderRadius),
+          ),
         ),
-        child: Column(children: [
-          // Precio
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                decoration: BoxDecoration(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
                     color: pancakeColor[100],
-                    borderRadius: BorderRadius.circular(borderRadius)),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                child: Text(
-                  '\$$pancakePrice',
-                  style: TextStyle(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                  child: Text(
+                    '\$$pancakePrice',
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: pancakeColor[800]),
+                      color: pancakeColor[800],
+                    ),
+                  ),
                 ),
-              )
-            ],
-          ),
-          // Imagen del producto
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-            child: Image.asset(imageName),
-          ),
-          // Texto del sabor del producto
-          Text(
-            pancakeFlavor,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          // Nombre de la tienda
-          const Text(
-            'Pancake House',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey,
-            ),
-          ),
-          // Íconos de "Me encanta" y "Agregar"
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  Icons.favorite,
-                  color: Colors.pink[400],
-                ),
-                Text(
-                  "Add",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      decoration: TextDecoration.underline),
-                )
               ],
             ),
-          ),
-        ]),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+              child: Image.asset(imageName),
+            ),
+            Text(
+              pancakeFlavor,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const Text(
+              'Pancake House',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.grey,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.favorite, color: Colors.orange[400]),
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Text(
+                      "Add", 
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

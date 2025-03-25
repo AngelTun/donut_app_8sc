@@ -5,11 +5,18 @@ class DonutTile extends StatelessWidget {
   final String donutPrice;
   final dynamic donutColor;
   final String imageName;
+  final VoidCallback onTap;
   
-
-  //Valor fijo del borde circular
-  final  double borderRadius = 24;
-  const DonutTile({super.key, required this.donutFlavor, required this.donutPrice, this.donutColor, required this.imageName});
+  final double borderRadius = 24;
+  
+  const DonutTile({
+    super.key, 
+    required this.donutFlavor, 
+    required this.donutPrice, 
+    this.donutColor, 
+    required this.imageName,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,34 +27,35 @@ class DonutTile extends StatelessWidget {
           color: donutColor[50],
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(borderRadius),
-            topRight: Radius.circular(borderRadius))
-            ),
-          child: Column(children: [
-            //Precio
+            topRight: Radius.circular(borderRadius),
+          ),
+        ),
+        child: Column(
+          children: [
             Row(
-            //Alinea el texto a la derecha
-            mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-            Container(
-              decoration: BoxDecoration(
-                color:  donutColor[100],
-                borderRadius: BorderRadius.circular(borderRadius)
-              ),
-              padding:
-              const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-              child: Text('\$$donutPrice',
-              style: TextStyle(
-                fontWeight:FontWeight.bold,
-                fontSize: 16,
-                color: donutColor[800] ),),
-            )
-            ],),
-            //Imagen del producto
+                Container(
+                  decoration: BoxDecoration(
+                    color: donutColor[100],
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                  child: Text(
+                    '\$$donutPrice',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: donutColor[800],
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-              child: Image.asset(imageName),),
-            //Texto del  sabor del producto con la tienda
-            // Texto del sabor del producto
+              child: Image.asset(imageName),
+            ),
             Text(
               donutFlavor,
               style: const TextStyle(
@@ -56,8 +64,6 @@ class DonutTile extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-           // const SizedBox(height: 4),
-            // Nombre de la tienda
             const Text(
               'Crispy Cream',
               style: TextStyle(
@@ -65,24 +71,28 @@ class DonutTile extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            //const SizedBox(height: 4),
-            //íconos de "Me encanta" y "agregar"
             Padding(
               padding: const EdgeInsets.all(12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Love icon
-                  Icon(Icons.favorite, color: Colors.pink[400],),
-                  Text("Add", style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    decoration: TextDecoration.underline
-                  ),)
-                ],),
+                  Icon(Icons.favorite, color: Colors.pink[400]),
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Text(
+                      "Add", 
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-
-          ],),
+            ),
+          ],
+        ),
       ),
     );
   }

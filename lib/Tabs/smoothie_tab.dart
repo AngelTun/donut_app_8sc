@@ -2,9 +2,9 @@ import 'package:donut_app_8sc/utils/smoothie_tile.dart';
 import 'package:flutter/material.dart';
 
 class SmoothieTab extends StatelessWidget {
-  // Lista de smoothies
+  final Function(double, String) onAddToCart;
+  
   final List smoothiesOnSale = [
-    //[smoothieFlavor, smoothiePrice, smoothieColor, imageName]
     ["Arándano", "50", Colors.purple, "lib/images/smoothie/smoothie_arandanos.png"],
     ["Arándano/frambuesa", "55", Colors.orange, "lib/images/smoothie/smoothie_arandanosframbuesa.png"],
     ["Chocolate", "60", Colors.green, "lib/images/smoothie/smoothie_chocolate.png"],
@@ -15,19 +15,28 @@ class SmoothieTab extends StatelessWidget {
     ["Plátano", "55", Colors.blue, "lib/images/smoothie/smoothie_platano.png"]
   ];
 
-  SmoothieTab({super.key});
+  SmoothieTab({super.key, required this.onAddToCart});
 
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      padding: const EdgeInsets.all(12),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, childAspectRatio: 1 / 1.5),
+        crossAxisCount: 2,
+        childAspectRatio: 1/1.5,
+        mainAxisSpacing: 12,
+        crossAxisSpacing: 12
+      ),
       itemBuilder: (context, index) {
         return SmoothieTile(
           smoothieFlavor: smoothiesOnSale[index][0],
           smoothiePrice: smoothiesOnSale[index][1],
           smoothieColor: smoothiesOnSale[index][2],
           imageName: smoothiesOnSale[index][3],
+          onTap: () => onAddToCart(
+            double.parse(smoothiesOnSale[index][1]),
+            smoothiesOnSale[index][0]
+          ),
         );
       },
       itemCount: smoothiesOnSale.length,
